@@ -19,6 +19,8 @@ Router.map(function() {
   });
   this.route('authors');
   this.route('books');
+  this.route('login');
+  this.route('callback');
 });
 
 export default Router;

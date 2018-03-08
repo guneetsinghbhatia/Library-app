@@ -28,7 +28,21 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    'ember-simple-auth': {
+      authorizer: 'authorizer:token',
+      routeAfterAuthentication: 'authors'
+    },
+    'token-auth': {
+      identificationField: 'username',
+      passwordField: 'password',
+      tokenPropertyName: 'accessToken',
+      refreshTokenPropertyName: 'refreshToken',
+      refreshLeeway: 300, // Refresh the token 5 minutes (300s) before it expires.
+      authnEndpoint: process.env.OKTA_URL || 'https://ps-siemens.oktapreview.com',
+      serverTokenEndpoint: process.env.OKTA_ISSUER_URL || 'https://ps-siemens.oktapreview.com/oauth2/auscq6xi1voHgyGAI0h7',
+      clientId: process.env.OKTA_APPLICATION_ID || '0oadrw76rv2DOzVsS0h7'
+    },
   };
 
   if (environment === 'development') {
